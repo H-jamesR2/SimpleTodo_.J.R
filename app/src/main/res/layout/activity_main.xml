@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:text="Add" />
+
+    <EditText
+        android:id="@+id/et_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toStartOf="@+id/btn_add"
+        android:ems="10"
+        android:hint="Add an item here!" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_items"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/et_item"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp" />
+
+</RelativeLayout>
+
+    <!-- Relative layout simpler than constrained layout..-->
+    <!-- Requirements for our app:
+        View a list of exisitng items
+        Add a new item
+        Remove an item
+        -> Could improve through: 'edit item', 'mark item complete', 'set item priority'
+        -->
+    <!-- Model View Controller (MVC Paradigm)
+        Model: structure of data
+            -> List of strings
+        View: User interface, or how model is presented/exposed to user
+            -> List of iitems
+            -> Controls for adding/removing
+        Controller: dynamic behavior and functional implementation
+            -> Rendering: Wiring the model to the view -> how to get list_of_strings into view
+            -> Persistence: Load/Save model data
+                -> can write data into database/ fetch data over internet
+            -> Mutation: add/remove model items
+        -->
+    <!-- Wireframe the ToDo App
+        (Top): Basic label w/ app name
+        (Middle): Basic list of items
+            -> vertically scrollable
+            -> Press and hold to remove item
+        (Bottom): Add new items
+            -> Input Text
+            -> Add Button
+        -->
+    <!-- Implementation:
+        View -> defined in res/layout/activity_main.xml
+        Model and Controller -> implemented in java
+        Persistence (load/save) via device file system
+        User Actions (add,remove) implemented via handlers on MainActivity
+        -->
+    <!-- Implementation: Tasks & Sub-Tasks
+        User_interface:
+            -> List View for items
+            -> Text field + button for adding items
+        Implement model as 'list of strings':
+            -> Mock data at first
+            -> Populate list view on app startup
+        Implement mutation actions:
+            -> Add logic on button press
+            -> Remove logic on press-and-hold
+        Implement persistence
+            -> Load model from file system on app startup
+            -> Store to file system after changes to model
+        -->
